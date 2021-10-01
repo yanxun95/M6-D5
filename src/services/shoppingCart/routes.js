@@ -2,7 +2,7 @@
 import express from "express";
 import db from "../../db/models/index.js";
 const router = express.Router();
-const { ShoppingCart, shoppingCartProduct } = db;
+const { ShoppingCart, shoppingCartProduct, Product } = db;
 import s from "sequelize";
 const { Op } = s;
 
@@ -11,6 +11,8 @@ router
     .get(async (req, res, next) => {
         try {
             const data = await ShoppingCart.findAll({
+                include: [{ model: Product, through: { attributes: [] } }]
+
             });
             res.send(data)
         } catch (error) {
