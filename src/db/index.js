@@ -6,12 +6,14 @@ const sequelize = new Sequelize(process.env.PGDATABASE, process.env.PGUSER, proc
     port: process.env.PGPORT,
     host: process.env.PGHOST,
     dialect: "postgres",
-    dialectOptions: {         // IMPORTANT
-        ssl: {
-            require: true,
-            rejectUnauthorized: false,
+    ...(NODE_ENV === "production" && {
+        dialectOptions: {         // IMPORTANT
+            ssl: {
+                require: true,
+                rejectUnauthorized: false,
+            },
         },
-    },
+    }),
 });
 
 const testDB = async () => {

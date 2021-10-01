@@ -4,6 +4,9 @@
   "description": "M6-D5",
   "main": "index.js",
   "type": "module",
+  "engines": {
+    "node": "v14.15.4"
+  },
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon -r dotenv/config src/server.js"
