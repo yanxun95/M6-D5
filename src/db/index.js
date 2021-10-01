@@ -6,7 +6,7 @@ const sequelize = new Sequelize(process.env.PGDATABASE, process.env.PGUSER, proc
     port: process.env.PGPORT,
     host: process.env.PGHOST,
     dialect: "postgres",
-    ...(NODE_ENV === "production" && {
+    ...(process.env.NODE_ENV === "production" && {
         dialectOptions: {         // IMPORTANT
             ssl: {
                 require: true,
